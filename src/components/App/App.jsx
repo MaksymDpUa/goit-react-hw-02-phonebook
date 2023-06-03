@@ -18,7 +18,7 @@ export class App extends Component {
   };
 
   isInList = name => {
-    return this.state.contacts.some(contact => contact.name === name);
+    return this.state.contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase());
   };
 
   onChangeFilter = e => {

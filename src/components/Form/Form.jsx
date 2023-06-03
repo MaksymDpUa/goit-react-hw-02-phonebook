@@ -17,19 +17,18 @@ export class Form extends Component {
     this.setState({ [name]: value });
   };
 
-  
   handleSubmit = e => {
     e.preventDefault();
 
-    if (this.props.isInList(this.state.name)) {
-      alert(`${this.state.name} is already in your contacts`);
+    const { name, number } = this.state;
+    
+    if (this.props.isInList(name)) {
+      alert(`${name} is already in your contacts`);
       return;
     }
 
     const id = nanoid();
-    this.props.addContact([
-      { name: this.state.name, id, number: this.state.number },
-    ]);
+    this.props.addContact([{ name, id, number }]);
 
     this.setState({ name: '', number: '' });
   };
